@@ -7,16 +7,16 @@ class TruckTest {
 	@Test
 	void testNameEquals() {
 		Truck truck = new Truck("Iveco");
-		String nobmreDelTruck = "Iveco";
-		assertEquals(nobmreDelTruck, truck.getName());
+		String truckName = "Iveco";
+		assertEquals(truckName, truck.getName());
 	}
 
 
 	@Test
 	void testNameNotEquals() {
 		Truck truck = new Truck("Iveco2");
-		String nobmreDelTruck = "Iveco";
-		assertNotEquals(nobmreDelTruck, truck.getName());
+		String truckName = "Iveco";
+		assertNotEquals(truckName, truck.getName());
 	}
 
 }
