@@ -22,5 +22,21 @@ public class TerminalTest {
 		String terminalName = "Montevideo";
 		assertNotEquals(terminalName, terminal.getName());
 	}
+	
+	@Test
+	void testTerminalPositionEquals() {
+		Point positionZero = new Point(0,0);
+		Terminal terminal = new Terminal("Buenos Aires", positionZero);
+		Point positionTest = new Point(0,0);
+		assertEquals(positionTest, terminal.getPosition());
+	}
+	
+	@Test
+	void testTerminalPositionNotEquals() {
+		Point positionZero = new Point(0,0);
+		Terminal terminal = new Terminal("Buenos Aires", positionZero);
+		Point positionOne = new Point(1,1);
+		assertNotEquals(positionOne, terminal.getPosition());
+	}
 
 }

@@ -7,14 +7,9 @@ public class Terminal {
 	public String getName() {
 		return name;
 	}
-	public void setName(String name) {
-		this.name = name;
-	}
+	
 	public Point getPosition() {
 		return position;
-	}
-	public void setPosition(Point position) {
-		this.position = position;
 	}
 	
 	public Terminal(String name, Point position) {
