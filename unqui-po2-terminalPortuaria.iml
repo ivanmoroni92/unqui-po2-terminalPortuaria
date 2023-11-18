@@ -34,5 +34,9 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="objenesis-3.1" level="project" />
+    <orderEntry type="library" name="mockito-core-3.6.0" level="project" />
+    <orderEntry type="library" name="byte-buddy-agent-1.10.15" level="project" />
+    <orderEntry type="library" name="byte-buddy-1.10.18" level="project" />
   </component>
 </module>
