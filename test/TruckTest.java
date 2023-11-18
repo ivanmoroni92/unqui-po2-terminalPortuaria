@@ -3,10 +3,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-
 import static org.mockito.Mockito.*;
-
-import javax.sql.rowset.BaseRowSet;
 
 class TruckTest {
 	// clase que testea que la instancia del truck se cree correctamente
@@ -39,6 +36,13 @@ class TruckTest {
 		when(viajarSeguros.getName()).thenReturn("viajarSeguros") ;
 		assertEquals("viajarSeguros", viajarSeguros.getName());	
 		
+	}
+
+	@Test
+	void testNameIsNotEqualsMock() {
+		when(viajarSeguros.getName()).thenReturn("viajarSeguros") ;
+		assertNotEquals("viajarSeguros2", viajarSeguros.getName());
+
 	}
 
 }
