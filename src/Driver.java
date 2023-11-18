@@ -8,7 +8,6 @@ public class Driver {
 	}
 
 	public Driver(String name) {
-		super();
 		this.name = name;
 	}
 	
