@@ -13,7 +13,6 @@ public class Terminal {
 	}
 	
 	public Terminal(String name, Point position) {
-		super();
 		this.name = name;
 		this.position = position;
 	}
