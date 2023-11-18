@@ -31,11 +31,4 @@ public class SectionTest {
 		verify(terminalBsAs,times(2)).getName();	//verifica cuantas veces se ejecutaron el metodo que quiero
 	}
 	
-	@Test
-	void testStartingTerminalNotEqualsName() {
-		when(terminalBsAs.getName()).thenReturn("Buenos Aires");
-		assertEquals(terminalBsAs.getName(), sectionTest.getStartingTerminal().getName());
-		
-		verify(terminalBsAs,times(2)).getName();
-	}
 }
