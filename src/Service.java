@@ -1,16 +1,5 @@
 
-public abstract class Service {
-	private Double price;
+public interface Service {
 	
-	//Constructor de Clase Service
-	
-	public Service(Double price) {
-		this.price = price;
-	}
-	
-	private Double getPrice() {
-		return price;
-	}
-	
-	public abstract Double chargeForUse(Container container);
+	Double chargeForUse(Container container, Order order);
 }
