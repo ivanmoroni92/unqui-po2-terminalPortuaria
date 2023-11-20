@@ -98,7 +98,7 @@ class ShipTest {
 	    ship.setPosition(shipPoint); 
 		assertEquals(50.0, ship.distanceToTerminale());
 		verify(terminal,times(4)).getPoint();
-		verify(terminal, times(0)).sendMailconsignees();
+		verify(terminal, times(0)).notifyConsignees();
 	}
 	
 	
@@ -114,7 +114,7 @@ class ShipTest {
 	    ship.setPosition(shipPoint); 
 		assertEquals(shipPoint, ship.getPosition());
 		assertNotEquals(outbound, ship.getState());
-		verify(terminal, times(1)).sendMailconsignees();
+		verify(terminal, times(1)).notifyConsignees();
 	
 	}
 	
@@ -143,7 +143,7 @@ class ShipTest {
 		
 		assertEquals(2.0, ship.distanceToTerminale());
 		assertNotEquals(departing, ship.getState());
-		verify(terminal,times(1)).sendMailShippers();
+		verify(terminal,times(1)).notifyShippers();
 		
 		
 	}
