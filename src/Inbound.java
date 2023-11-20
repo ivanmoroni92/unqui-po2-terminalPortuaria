@@ -1,5 +1,5 @@
 
-public class Inbound implements State {
+public class Inbound implements IState {
 	
 	
 	public Inbound () {
@@ -9,7 +9,7 @@ public class Inbound implements State {
 	@Override
 	public void updateState(Ship ship, IManagedTerminal terminal) {
 		System.out.println(" cambia a Arrived " );
-		State newState = new Arrived() ;
+		IState newState = new Arrived() ;
 		ship.setState(newState);
 		
 	}

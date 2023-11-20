@@ -30,4 +30,6 @@ public abstract class Container {
     public double getVolume(){
         return this.heigth * this.length * this.width;
     }
+    
+    public abstract double getConsumePerHour();
 }

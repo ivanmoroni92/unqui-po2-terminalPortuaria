@@ -1,12 +1,12 @@
 
-public class Working implements State {
+public class Working implements IState {
     
 	public Working () {
 		
 	}
 	@Override
 	public void updateState(Ship ship, IManagedTerminal terminal) {
-	  State newState = new Departing();
+	  IState newState = new Departing();
 	  ship.setState(newState);
 	}
 
