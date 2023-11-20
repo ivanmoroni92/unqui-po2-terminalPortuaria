@@ -9,7 +9,7 @@ public class Outbound implements State {
 	public void updateState(Ship ship, IManagedTerminal terminal) {
 		State newState = new Inbound();
 		ship.setState(newState);
-		terminal.sendMailconsignees();
+		terminal.notifyConsignees();
 	}
 
 	@Override

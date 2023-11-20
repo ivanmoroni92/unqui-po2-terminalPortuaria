@@ -5,7 +5,7 @@ public class Departing  implements State{
 	public void updateState(Ship ship, IManagedTerminal terminal) {
 		 State newState = new Outbound(); 
 		 ship.setState(newState);
-		 terminal.sendMailShippers();
+		 terminal.notifyShippers();
 		
 	}
 
