@@ -1,5 +1,5 @@
 
 public interface Service {
 	
-	Double chargeForUse(Container container, Order order);
+	Double chargeForUse(Container container, Double number);
 }

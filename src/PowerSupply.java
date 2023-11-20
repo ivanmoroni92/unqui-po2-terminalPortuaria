@@ -13,8 +13,8 @@ public class PowerSupply implements Service{
 	}
 
 	@Override
-	public Double chargeForUse(Container container, Order order) {
-		return getCostOfKW() * container.getConsumePerHour() * order.calculateUsedTime();
+	public Double chargeForUse(Container container, Double hoursConnected) {
+		return getCostOfKW() * container.getConsumePerHour() * hoursConnected;
 	}
 
 }

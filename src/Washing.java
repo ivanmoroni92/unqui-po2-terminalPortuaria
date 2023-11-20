@@ -13,7 +13,7 @@ public class Washing implements Service{
 	}
 	
 	@Override
-	public Double chargeForUse(Container container, Order order) {
+	public Double chargeForUse(Container container, Double number) {
 		
 		if (container.getVolume() > getVolumeCondition()) {
             return getPriceForMaxVolume();
