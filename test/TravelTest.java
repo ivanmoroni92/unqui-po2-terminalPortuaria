@@ -101,7 +101,7 @@ public class TravelTest {
         assertEquals(arrivedEstadosUnidosDate, travel.getArrivalDate(terminalEstadosUnidos));
 
         // tarda 180 horas en volver de eeuu a bsas (exactamente 7 dias y 12 horas)
-        // por lo tanto de bsas a eeuu deberia llegar el 17 de diciembre de 2023 a las 9 de la mañana.
+        // por lo tanto en hacer el recorrido entero y volver a bsas deberia llegar el 17 de diciembre de 2023 a las 9 de la mañana.
         LocalDateTime arrivedBsAsDate = LocalDateTime.of(2023, 12, 17, 9, 0);
         assertEquals(arrivedBsAsDate, travel.getArrivalDate(terminalBuenosAires));
 
