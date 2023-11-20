@@ -3,9 +3,9 @@ public class Washing implements Service{
 	
 	private final Double priceForMinVolume;
 	private final Double priceForMaxVolume;
-	private final Integer volumeCondition;
+	private final Double volumeCondition;
 	
-	public Washing(Double priceForMinVolume, Double priceForMaxVolume, Integer volumeCondition) {
+	public Washing(Double priceForMinVolume, Double priceForMaxVolume, Double volumeCondition) {
 		super();
 		this.priceForMinVolume = priceForMinVolume;
 		this.priceForMaxVolume = priceForMaxVolume;
@@ -30,7 +30,7 @@ public class Washing implements Service{
 		return priceForMaxVolume;
 	}
 
-	public Integer getVolumeCondition() {
+	public Double getVolumeCondition() {
 		return volumeCondition;
 	}
 	
