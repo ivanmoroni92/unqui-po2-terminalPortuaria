@@ -8,7 +8,6 @@ public class Arrived implements State {
 	@Override
 	public void updateState(Ship ship, IManagedTerminal terminal) {
 		State newState = new Working();
-		System.out.println(" cambia a Working " );
 		ship.setState(newState);
 		
 		

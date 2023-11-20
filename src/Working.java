@@ -7,7 +7,6 @@ public class Working implements State {
 	@Override
 	public void updateState(Ship ship, IManagedTerminal terminal) {
 	  State newState = new Departing();
-	  System.out.println(" cambia a Departing " );
 	  ship.setState(newState);
 	}
 
