@@ -1,5 +1,5 @@
 
-public interface State {
+public interface IState {
 	   void updateState(Ship ship, IManagedTerminal terminal);
 	   boolean distanceCondition(Ship ship);
 	   void depart(Ship ship, IManagedTerminal terminal);

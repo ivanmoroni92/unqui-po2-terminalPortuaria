@@ -17,11 +17,11 @@ class ShipTest {
 	private Point startPoint ;
 	private Point terminalPoint ;
 	@Mock private IManagedTerminal terminal ;
-	private State outbound ;
-	private State Inbound  ;
-	private State working ;
-	private State Arrived ;
-	private State departing ;
+	private IState outbound ;
+	private IState Inbound  ;
+	private IState working ;
+	private IState Arrived ;
+	private IState departing ;
 
 	
 	

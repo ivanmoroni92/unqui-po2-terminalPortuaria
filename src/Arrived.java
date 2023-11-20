@@ -1,5 +1,5 @@
 
-public class Arrived implements State {
+public class Arrived implements IState {
 	
 	public Arrived () {
 		
@@ -7,7 +7,7 @@ public class Arrived implements State {
 
 	@Override
 	public void updateState(Ship ship, IManagedTerminal terminal) {
-		State newState = new Working();
+		IState newState = new Working();
 		ship.setState(newState);
 		
 		

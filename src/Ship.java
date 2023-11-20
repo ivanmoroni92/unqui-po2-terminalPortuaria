@@ -34,7 +34,7 @@ public class Ship {
 	private String id ;
 	private Point position ; 
 	private IManagedTerminal origen ;
-	private State state ;
+	private IState state ;
 
 	 /**
      * Constructor de la clase Ship.
@@ -45,7 +45,7 @@ public class Ship {
      * @param origen  Terminal de origen del buque.
      */
 	
-	public Ship(String id,Point position,State state,IManagedTerminal origen ){
+	public Ship(String id,Point position,IState state,IManagedTerminal origen ){
 		this.id = id ;
 		this.state = state;
 		this.origen = origen ;
@@ -63,7 +63,7 @@ public class Ship {
 	
 	
 
-    public State getState() {
+    public IState getState() {
 			return  state ;
 			
 	}
@@ -73,7 +73,7 @@ public class Ship {
 	 *
 	 * @param state Nuevo estado del buque.
 	 */
-	public void setState(State state) {
+	public void setState(IState state) {
 			this.state = state ;
 			
 	}

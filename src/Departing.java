@@ -1,9 +1,9 @@
 
-public class Departing  implements State{
+public class Departing  implements IState{
 
 	@Override
 	public void updateState(Ship ship, IManagedTerminal terminal) {
-		 State newState = new Outbound(); 
+		 IState newState = new Outbound(); 
 		 ship.setState(newState);
 		 terminal.notifyShippers();
 		
