@@ -1,5 +1,5 @@
 
-public interface Order {
+public interface IOrder {
 	
 	Double getOrderPrice();
 	
