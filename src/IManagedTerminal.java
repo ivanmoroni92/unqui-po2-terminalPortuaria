@@ -2,7 +2,7 @@ import java.awt.Point;
 
 public interface  IManagedTerminal {
 	Point getPoint() ;
-	void sendMailconsignees();
-	void sendMailShippers();
+	void notifyShippers();
+	void notifyConsignees();
 	String getName();
 }
