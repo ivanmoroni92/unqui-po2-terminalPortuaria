@@ -17,6 +17,9 @@ public class ShippingRoute {
         return name;
     }
 
+    public void addSection(Section section) {
+        sections.add(section);
+    }
 
     public Double getTotalPrice(){
         // recorre las secciones y suma el precio de cada una
@@ -32,8 +35,9 @@ public class ShippingRoute {
         // se toma el size -1 para saber el index de la ultima seccion de la ruta
         // se obtiene la ultima seccion con ese index
         // se le pide su endingTerminal para saber el destino final de la ruta.
+        // se toma la starting terminal de la ultima section ya que se entiende que de la ultima seccion, la  endingTerminal es la managedTerminal
         int  lastSectionIndex = this.sections.size() - 1;
         Section lastSection = this.sections.get(lastSectionIndex);
-        return lastSection.getEndingTerminal();
+        return lastSection.getStartingTerminal();
     }
 }
