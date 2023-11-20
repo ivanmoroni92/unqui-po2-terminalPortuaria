@@ -17,7 +17,7 @@ public class Section {
 	}
 	
 	/**
-	 * Este valor representa el tiempo que un buque demora un tramo desde la startingTerminal hasta la endingTerminal
+	 * Este valor representa el tiempo  en HORAS que un buque demora un tramo desde la startingTerminal hasta la endingTerminal
 	 * @return
 	 */
 	

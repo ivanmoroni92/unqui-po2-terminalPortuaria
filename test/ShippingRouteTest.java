@@ -34,8 +34,9 @@ public class ShippingRouteTest {
     // se testea que la instancia de shipping route funciona correctamente
     @Test
     void testShippingRouteOk(){
+        shippingRoute.addSection(section1);
         assertEquals("ruta1",shippingRoute.getName());
-        assertEquals(3, shippingRoute.getSections().size());
+        assertEquals(4, shippingRoute.getSections().size());
     }
 
     @Test
@@ -82,12 +83,12 @@ public class ShippingRouteTest {
     // se testea que la shipping route sabe contestar cual es su ultimo destino
     @Test
     void testShippingRouteGetDestinyOk(){
-        when(section3.getEndingTerminal()).thenReturn(terminal1);
+        when(section3.getStartingTerminal()).thenReturn(terminal1);
         when(terminal1.getName()).thenReturn("Chile");
         assertEquals("Chile", shippingRoute.getDestiny().getName());
         verify(terminal1,times(1)).getName();
-        verify(section3,times(1)).getEndingTerminal();
-        verify(section1,times(0)).getEndingTerminal();
-        verify(section2,times(0)).getEndingTerminal();
+        verify(section3,times(1)).getStartingTerminal();
+        verify(section1,times(0)).getStartingTerminal();
+        verify(section2,times(0)).getStartingTerminal();
     }
 }
