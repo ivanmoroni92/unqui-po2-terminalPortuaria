@@ -24,6 +24,8 @@ public class TravelTest {
 
     @Mock private Section sectionEstadosUnidosBuenosAires;
 
+    @Mock private Ship ship;
+
     private Travel travel;
 
     @BeforeEach
@@ -35,9 +37,10 @@ public class TravelTest {
         sectionBuenosAiresMexico = mock(Section.class);
         sectionMexicoEstadosUnidos = mock(Section.class);
         sectionEstadosUnidosBuenosAires = mock(Section.class);
+        ship = mock(Ship.class);
         ruta = mock(ShippingRoute.class);
         LocalDateTime startingDate = LocalDateTime.of(2023, 12, 3, 15, 0);
-        travel = new Travel(startingDate , ruta);
+        travel = new Travel(startingDate , ruta, ship);
     }
 
 
@@ -47,9 +50,11 @@ public class TravelTest {
         sections.add(sectionBuenosAiresMexico);
         sections.add(sectionMexicoEstadosUnidos);
         sections.add(sectionEstadosUnidosBuenosAires);
+        when(ship.getId()).thenReturn("ship1");
         when(ruta.getSections()).thenReturn(sections);
         assertEquals(LocalDateTime.of(2023, 12, 3, 15, 0), travel.getStartingDate());
         assertEquals(3, travel.getRoute().getSections().size());
+        assertEquals("ship1",travel.getShip().getId());
     }
 
 

@@ -1,12 +1,16 @@
 import java.time.LocalDateTime;
+import java.util.Iterator;
 
 public class Travel {
+    // la clase travel respresenta a un ship recorriendo una ruta en una fecha de salida determinada.
     private LocalDateTime startingDate;
     private ShippingRoute route;
+    private Ship ship;
 
-    public Travel(LocalDateTime startingDate, ShippingRoute route) {
+    public Travel(LocalDateTime startingDate, ShippingRoute route, Ship ship) {
         this.startingDate = startingDate;
         this.route = route;
+        this.ship = ship;
     }
 
     public LocalDateTime getStartingDate() {
@@ -17,13 +21,21 @@ public class Travel {
         return route;
     }
 
+    public Ship getShip() {
+        return ship;
+    }
+
     public LocalDateTime getArrivalDate(Terminal terminal) {
+        // metodo que se encarga de devolver la fecha de llegada a una terminal especifica.
         LocalDateTime arrivalDate = startingDate;
         String terminalName = terminal.getName();
+        Iterator<Section> sectionIterator = route.getSections().iterator();
 
         // se recorre la lista de secciones y se va calculando la fecha de llegada en base a la cantidad de horas que se tarda en recorrer esa seccion.
         // asumimos que la lista de secciones esta ordenada en base a como el ship recorre esa ruta.
-        for (Section section : route.getSections()) {
+        // se termina de recorrer cuando se encuentra la terminal deseada o cuando no se encuentra, lanzando una exception.
+       while(sectionIterator.hasNext()){
+           Section section = sectionIterator.next();
             String endingTerminalName = section.getEndingTerminal().getName();
             arrivalDate = arrivalDate.plusHours(section.getTime());
 
