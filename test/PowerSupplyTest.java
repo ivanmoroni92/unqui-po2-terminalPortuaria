@@ -1,23 +1,21 @@
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.mockito.Mockito.*;
-
 class PowerSupplyTest {
 	
-	@Mock
-	private DryContainer dryContainerTest;
+	@Mock private DryContainer dryContainerTest;
 	@Mock private RefeerContainer refeerContainerTest;
 	@Mock private TankContainer tankContainerTest;
 	private PowerSupply powerSupplyTest;
 	
 	private Double costOfKWTest;
-	private Double zeroHoursConected;
-	private Double tenHoursConected;
-
 	
 	@BeforeEach
 	void setUp() {
@@ -25,9 +23,13 @@ class PowerSupplyTest {
 		refeerContainerTest = mock(RefeerContainer.class);
 		tankContainerTest = mock(TankContainer.class);
 		costOfKWTest = 100.0;
-		powerSupplyTest = new PowerSupply(costOfKWTest);
-		zeroHoursConected = 0.0;
-		tenHoursConected = 10.0;
+		powerSupplyTest = new PowerSupply(costOfKWTest, "Power Supply");
+
+	}
+	
+	@Test
+	void testName() {
+		assertEquals("Power Supply", powerSupplyTest.getServiceName());
 	}
 	
 	@Test
@@ -46,7 +48,15 @@ class PowerSupplyTest {
 	void testEqualsDryContainerChargeForUse() {
 		
 		when(dryContainerTest.getConsumePerHour()).thenReturn(0.0);
-		assertEquals(0.0, powerSupplyTest.chargeForUse(dryContainerTest,tenHoursConected));
+		assertEquals(0.0, powerSupplyTest.chargeForUse(dryContainerTest));
+		verify(dryContainerTest, times(1)).getConsumePerHour();
+	}
+	
+	@Test
+	void testNotEqualsDryContainerChargeForUse() {
+		
+		when(dryContainerTest.getConsumePerHour()).thenReturn(0.0);
+		assertNotEquals(1.0, powerSupplyTest.chargeForUse(dryContainerTest));
 		verify(dryContainerTest, times(1)).getConsumePerHour();
 	}
 	
@@ -54,30 +64,32 @@ class PowerSupplyTest {
 	void testEqualsTankContainerChargeForUse() {
 		
 		when(tankContainerTest.getConsumePerHour()).thenReturn(0.0);
-		assertEquals(0.0, powerSupplyTest.chargeForUse(tankContainerTest,tenHoursConected));
+		assertEquals(0.0, powerSupplyTest.chargeForUse(tankContainerTest));
 		verify(tankContainerTest, times(1)).getConsumePerHour();
 	}
 	
 	@Test
 	void testEqualsRefeerContainerChargeForUse() {
 		
+		powerSupplyTest.setHoursConnected(5.0);
 		when(refeerContainerTest.getConsumePerHour()).thenReturn(2.0);
-		assertEquals(2000.0, powerSupplyTest.chargeForUse(refeerContainerTest,tenHoursConected));
+		assertEquals(1000.0, powerSupplyTest.chargeForUse(refeerContainerTest));
 		verify(refeerContainerTest, times(1)).getConsumePerHour();
 	}
 	
 	@Test
 	void testNotEqualsRefeerContainerChargeForUse() {
 		
+		powerSupplyTest.setHoursConnected(8.0);
 		when(refeerContainerTest.getConsumePerHour()).thenReturn(4.0);
-		assertNotEquals(2000.0, powerSupplyTest.chargeForUse(refeerContainerTest,tenHoursConected));
+		assertNotEquals(1000.0, powerSupplyTest.chargeForUse(refeerContainerTest));
 		verify(refeerContainerTest, times(1)).getConsumePerHour();
 	}
 
 void testEqualsRefeerContainerZeroHoursChargeForUse() {
 		
 		when(refeerContainerTest.getConsumePerHour()).thenReturn(2.0);
-		assertEquals(0.0, powerSupplyTest.chargeForUse(refeerContainerTest,zeroHoursConected));
+		assertEquals(0.0, powerSupplyTest.chargeForUse(refeerContainerTest));
 		verify(refeerContainerTest, times(1)).getConsumePerHour();
 	}
 }

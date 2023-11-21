@@ -1,15 +1,12 @@
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.mockito.Mockito.mock;
-
 class WeighingTest {
 	
-	@Mock
-	private DryContainer dryContainerTest;
+	@Mock private DryContainer dryContainerTest;
 	@Mock private RefeerContainer refeerContainerTest;
 	@Mock private TankContainer tankContainerTest;
 	private Weighing weighingTest;
@@ -21,7 +18,7 @@ class WeighingTest {
 		refeerContainerTest = mock(RefeerContainer.class);
 		tankContainerTest = mock(TankContainer.class);
 		fixedPriceTest = 10.0;
-		weighingTest = new Weighing(fixedPriceTest);
+		weighingTest = new Weighing(fixedPriceTest, "Weighing");
 		
 	}
 	
@@ -40,19 +37,19 @@ class WeighingTest {
 	@Test
 	void testEqualsDryContainerChargeForUse() {
 		
-		assertEquals(10.0, weighingTest.chargeForUse(dryContainerTest, 25.0));
+		assertEquals(10.0, weighingTest.chargeForUse(dryContainerTest));
 	}
 	
 	@Test
 	void testEqualsRefeerContainerChargeForUse() {
 		
-		assertEquals(10.0, weighingTest.chargeForUse(refeerContainerTest, 5.0));
+		assertEquals(10.0, weighingTest.chargeForUse(refeerContainerTest));
 	}
 	
 	@Test
 	void testEqualsTankContainerChargeForUse() {
 		
-		assertEquals(10.0, weighingTest.chargeForUse(tankContainerTest, 2.0));
+		assertEquals(10.0, weighingTest.chargeForUse(tankContainerTest));
 	}
 
 }
