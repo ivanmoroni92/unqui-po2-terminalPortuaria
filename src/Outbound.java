@@ -6,7 +6,7 @@ public class Outbound implements IState {
 	}
 
 	@Override
-	public void updateState(Ship ship, IManagedTerminal terminal) {
+	public void updateState(Ship ship, ManagedTerminal terminal) {
 		IState newState = new Inbound();
 		ship.setState(newState);
 		terminal.notifyConsignees();
@@ -19,13 +19,13 @@ public class Outbound implements IState {
 	}
 
 	@Override
-	public void depart(Ship ship, IManagedTerminal terminal) {
+	public void depart(Ship ship, ManagedTerminal terminal) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void startWork(Ship ship, IManagedTerminal terminal) {
+	public void startWork(Ship ship, ManagedTerminal terminal) {
 		// TODO Auto-generated method stub
 		
 	}

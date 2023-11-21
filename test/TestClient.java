@@ -9,12 +9,17 @@ class TestClient {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		cliente = new Client("Ivan");
+		cliente = new Client("Ivan" , "ivancito@gmail.com");
 	}
 
 	@Test
 	void getNameClient() {
 		assertEquals("Ivan", cliente.getName()  );
+	}
+
+	@Test
+	void getEmailClient() {
+		assertEquals("ivancito@gmail.com", cliente.getMail() );
 	}
 
 }

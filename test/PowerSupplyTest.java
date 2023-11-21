@@ -17,7 +17,6 @@ class PowerSupplyTest {
 	
 	private Double costOfKWTest;
 	
-	
 	@BeforeEach
 	void setUp() {
 		dryContainerTest = mock(DryContainer.class);

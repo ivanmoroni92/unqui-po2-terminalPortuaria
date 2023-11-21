@@ -1,5 +1,5 @@
 
-public class Washing implements IService{
+public class Washing implements IService {
 	
 	private final Double priceForMinVolume;
 	private final Double priceForMaxVolume;
