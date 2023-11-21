@@ -47,4 +47,32 @@ public class Travel {
         // si la terminal que se desea no forma parte de la ruta, se lanza una exception.
         throw new IllegalArgumentException("El terminal proporcionado no es parte de la ruta del viaje.");
     }
+
+    public Double getTotalPriceUntilTerminal(Terminal targetTerminal) {
+        // metodo que se encarga de devolver el precio del viaje hasta una terminal especifica
+        Double totalCost = 0.0;
+        String targetTerminalName = targetTerminal.getName();
+        Iterator<Section> sectionIterator = route.getSections().iterator();
+
+        // se recorre la lista de secciones y se va calculando el precio de cada seccion hasta llegar a la deseada.
+        // asumimos que la lista de secciones esta ordenada en base a como el ship recorre esa ruta.
+        // se termina de recorrer cuando se encuentra la terminal deseada o cuando no se encuentra, lanzando una exception.
+        while (sectionIterator.hasNext()) {
+            Section section = sectionIterator.next();
+            String endingTerminalName = section.getEndingTerminal().getName();
+
+            // Sumar el precio de la sección actual al total
+            totalCost += section.getPrice();
+
+            if (endingTerminalName.equals(targetTerminalName)) {
+                // Cuando encontramos el nombre de la terminal deseada, devolvemos el total acumulado.
+                return totalCost;
+            }
+        }
+
+        // Si la terminal que se desea no forma parte de la ruta, se lanza una excepción.
+        throw new IllegalArgumentException("La terminal proporcionada no es parte de la ruta del viaje.");
+    }
+
+
 }
