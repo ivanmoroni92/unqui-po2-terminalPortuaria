@@ -1,5 +1,4 @@
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
+
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,9 +7,13 @@ import org.mockito.Mock;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
+
 
 public class ShippingCompanyTest {
-    @Mock private Ship ship1;
+    @Mock
+    private Ship ship1;
     @Mock private Ship ship2;
     @Mock private ShippingRoute route1;
     @Mock private ShippingRoute route2;

@@ -1,13 +1,15 @@
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.mockito.Mockito.mock;
+
 class WeighingTest {
 	
-	@Mock private DryContainer dryContainerTest;
+	@Mock
+	private DryContainer dryContainerTest;
 	@Mock private RefeerContainer refeerContainerTest;
 	@Mock private TankContainer tankContainerTest;
 	private Weighing weighingTest;
