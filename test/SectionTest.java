@@ -1,15 +1,16 @@
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.mockito.Mockito.*;
 
 public class SectionTest {
 	
 	//Declaro las variables acá por tema de scope
-	@Mock private Terminal terminalBsAs;	//Declarar el mock
+	@Mock
+	private Terminal terminalBsAs;	//Declarar el mock
 	@Mock private Terminal terminalMontevideo;	//Declarar el mock
 	private Section sectionTest;	//Declarar la variable
 	

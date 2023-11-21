@@ -16,7 +16,7 @@ class ShipTest {
 	private Ship ship ;
 	private Point startPoint ;
 	private Point terminalPoint ;
-	@Mock private IManagedTerminal terminal ;
+	@Mock private ManagedTerminal terminal ;
 	private IState outbound ;
 	private IState Inbound  ;
 	private IState working ;
@@ -31,7 +31,7 @@ class ShipTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		outbound = new Outbound();
-		terminal = mock(IManagedTerminal.class);
+		terminal = mock(ManagedTerminal.class);
 		startPoint = new Point(50, 0);
 		ship = new Ship("A-100", startPoint,outbound,terminal) ;
 		}
@@ -75,7 +75,7 @@ class ShipTest {
 		// mokeo la posicion de la terminal por que la necesito
         //para el mensaje distanceCondition dentro del setPosition.
 		terminalPoint = new Point(0, 0);
-		when(terminal.getPoint()).thenReturn(terminalPoint);
+		when(terminal.getPosition()).thenReturn(terminalPoint);
 		Point  shipPoint = new Point(60,45);
 	    ship.setPosition(shipPoint); 
 		assertEquals(shipPoint, ship.getPosition());
@@ -93,11 +93,11 @@ class ShipTest {
 		//las condiciones necesarias.
 		//Como resultado,no se emite una notificación a los consignatarios en esta situación.
 		terminalPoint = new Point(0, 0);
-		when(terminal.getPoint()).thenReturn(terminalPoint);
+		when(terminal.getPosition()).thenReturn(terminalPoint);
 		Point  shipPoint = new Point(50,0);
 	    ship.setPosition(shipPoint); 
 		assertEquals(50.0, ship.distanceToTerminale());
-		verify(terminal,times(4)).getPoint();
+		verify(terminal,times(4)).getPosition();
 		verify(terminal, times(0)).notifyConsignees();
 	}
 	
@@ -109,7 +109,7 @@ class ShipTest {
 		//los consignatarios para notificarles.
 	   
 		terminalPoint = new Point(50, 50);
-		when(terminal.getPoint()).thenReturn(terminalPoint);
+		when(terminal.getPosition()).thenReturn(terminalPoint);
 		Point  shipPoint = new Point(40,35);
 	    ship.setPosition(shipPoint); 
 		assertEquals(shipPoint, ship.getPosition());
@@ -122,12 +122,12 @@ class ShipTest {
 	void testShipAtTheTerminal() {
 		// terminal se encuentra a 0km de distancia.
 		terminalPoint = new Point(85, 95);
-		when(terminal.getPoint()).thenReturn(terminalPoint);
+		when(terminal.getPosition()).thenReturn(terminalPoint);
 		Point  shipPoint = new Point(85, 95);
 	    ship.setPosition(shipPoint); 
 		
 		assertEquals(0, ship.distanceToTerminale());
-		verify(terminal,times(4)).getPoint(); 
+		verify(terminal,times(4)).getPosition();
 	}
 	
 	@Test
@@ -137,15 +137,14 @@ class ShipTest {
 		departing = new Departing();
 		ship.setState(departing);
 		terminalPoint = new Point(40, 35);
-		when(terminal.getPoint()).thenReturn(terminalPoint);
+		when(terminal.getPosition()).thenReturn(terminalPoint);
 		Point  shipPoint = new Point(42, 35);
 	    ship.setPosition(shipPoint); 
 		
 		assertEquals(2.0, ship.distanceToTerminale());
 		assertNotEquals(departing, ship.getState());
 		verify(terminal,times(1)).notifyShippers();
-		
-		
+		verify(terminal,times(1)).notifyClients();
 	}
 	
 	
@@ -178,14 +177,4 @@ class ShipTest {
 		ship.depart(); 
 		assertNotEquals(working,ship.getState() );		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }

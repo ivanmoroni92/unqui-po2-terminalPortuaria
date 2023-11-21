@@ -33,7 +33,7 @@ public class Ship {
 	
 	private String id ;
 	private Point position ; 
-	private IManagedTerminal origen ;
+	private ManagedTerminal origen ;
 	private IState state ;
 
 	 /**
@@ -45,7 +45,7 @@ public class Ship {
      * @param origen  Terminal de origen del buque.
      */
 	
-	public Ship(String id,Point position,IState state,IManagedTerminal origen ){
+	public Ship(String id,Point position,IState state,ManagedTerminal origen ){
 		this.id = id ;
 		this.state = state;
 		this.origen = origen ;
@@ -53,7 +53,7 @@ public class Ship {
 		
 	}
 	
-	public IManagedTerminal getOrigen() {
+	public ManagedTerminal getOrigen() {
 		return origen;
 	}
 	
@@ -87,8 +87,8 @@ public class Ship {
     *
     */
     public  double distanceToTerminale() {
-    	double distanceX = origen.getPoint().x - this.getPosition().x;
-    	double distanceY = origen.getPoint().y - this.getPosition().y ;
+    	double distanceX = origen.getPosition().x - this.getPosition().x;
+    	double distanceY = origen.getPosition().y - this.getPosition().y ;
         return Math.sqrt(distanceX * distanceX + distanceY * distanceY);
     }
 

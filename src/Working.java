@@ -5,7 +5,7 @@ public class Working implements IState {
 		
 	}
 	@Override
-	public void updateState(Ship ship, IManagedTerminal terminal) {
+	public void updateState(Ship ship, ManagedTerminal terminal) {
 	  IState newState = new Departing();
 	  ship.setState(newState);
 	}
@@ -17,14 +17,14 @@ public class Working implements IState {
 	}
 
 	@Override
-	public void depart(Ship ship, IManagedTerminal terminal) {
+	public void depart(Ship ship, ManagedTerminal terminal) {
 		 System.out.println("requesting departure");
 		 this.updateState(ship, terminal);
 		
 	}
 
 	@Override
-	public void startWork(Ship ship, IManagedTerminal terminal) {
+	public void startWork(Ship ship, ManagedTerminal terminal) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -1,14 +1,15 @@
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.mockito.Mockito.mock;
+
 class ExcessStorageTest {
 	
-	@Mock private Container containerTest;
+	@Mock
+	private Container containerTest;
 	private ExcessStorage excessStorage;
 	private Double fixedPriceTest;
 	private Double zeroDayOfExcess;
