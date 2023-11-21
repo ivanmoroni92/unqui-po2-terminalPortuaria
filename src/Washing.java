@@ -1,19 +1,25 @@
 
-public class Washing implements Service{
+public class Washing implements IService{
 	
 	private final Double priceForMinVolume;
 	private final Double priceForMaxVolume;
 	private final Double volumeCondition;
+	private String serviceName;
 	
-	public Washing(Double priceForMinVolume, Double priceForMaxVolume, Double volumeCondition) {
+	public Washing(Double priceForMinVolume, Double priceForMaxVolume, Double volumeCondition, String serviceName) {
 		super();
 		this.priceForMinVolume = priceForMinVolume;
 		this.priceForMaxVolume = priceForMaxVolume;
+		this.serviceName = serviceName;
 		this.volumeCondition = volumeCondition;
 	}
 	
+	public String getServiceName() {
+		return serviceName;
+	}
+	
 	@Override
-	public Double chargeForUse(Container container, Double number) {
+	public Double chargeForUse(Container container) {
 		
 		if (container.getVolume() > getVolumeCondition()) {
             return getPriceForMaxVolume();

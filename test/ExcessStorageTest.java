@@ -1,28 +1,30 @@
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
 class ExcessStorageTest {
 	
-	@Mock private Container containerTest;
+	@Mock private DryContainer dryContainerTest;
+	@Mock private RefeerContainer refeerContainerTest;
+	@Mock private TankContainer tankContainerTest;
 	private ExcessStorage excessStorage;
 	private Double fixedPriceTest;
-	private Double zeroDayOfExcess;
-	private Double oneDayOfExcess;
-	private Double twoDayOfExcess;
 	
 	@BeforeEach
 	void setUp() {
-		containerTest = mock(Container.class) ;
+		dryContainerTest = mock(DryContainer.class);
+		refeerContainerTest = mock(RefeerContainer.class);
+		tankContainerTest = mock(TankContainer.class);
 		fixedPriceTest = 100.0;
-		excessStorage = new ExcessStorage(fixedPriceTest);
-		zeroDayOfExcess = 0.0;
-		oneDayOfExcess = 1.0;
-		twoDayOfExcess = 2.0;
+		excessStorage = new ExcessStorage(fixedPriceTest, "Excess Storage");
+		
+	}
+	
+	@Test
+	void testName() {
+		assertEquals("Excess Storage", excessStorage.getServiceName());
 	}
 	
 	@Test
@@ -37,31 +39,36 @@ class ExcessStorageTest {
 	
 	@Test
 	void testEqualsZeroDaysOfExcess() {
-		assertEquals(0, excessStorage.chargeForUse(containerTest, zeroDayOfExcess));
+		assertEquals(0, excessStorage.chargeForUse(dryContainerTest));
 	}
 	
 	@Test
 	void testNotEqualsZeroDaysOfExcess() {
-		assertNotEquals(0, excessStorage.chargeForUse(containerTest, oneDayOfExcess));
+		excessStorage.setDaysOfExcess(1.0);
+		assertNotEquals(0, excessStorage.chargeForUse(dryContainerTest));
 	}
 	
 	@Test
 	void testEqualsOneDaysOfExcess() {
-		assertEquals(100.0, excessStorage.chargeForUse(containerTest, oneDayOfExcess));
+		excessStorage.setDaysOfExcess(1.0);
+		assertEquals(100.0, excessStorage.chargeForUse(refeerContainerTest));
 	}
 	
 	@Test
 	void testNotEqualsOneDaysOfExcess() {
-		assertNotEquals(100.0, excessStorage.chargeForUse(containerTest, twoDayOfExcess));
+		excessStorage.setDaysOfExcess(2.0);
+		assertNotEquals(100.0, excessStorage.chargeForUse(refeerContainerTest));
 	}
 	
 	@Test
 	void testEqualsTwoDaysOfExcess() {
-		assertEquals(200.0, excessStorage.chargeForUse(containerTest, twoDayOfExcess));
+		excessStorage.setDaysOfExcess(2.0);
+		assertEquals(200.0, excessStorage.chargeForUse(tankContainerTest));
 	}
 	
 	@Test
 	void testNotEqualsTwoDaysOfExcess() {
-		assertNotEquals(200.0, excessStorage.chargeForUse(containerTest, zeroDayOfExcess));
+		excessStorage.setDaysOfExcess(3.0);
+		assertNotEquals(200.0, excessStorage.chargeForUse(tankContainerTest));
 	}
 }

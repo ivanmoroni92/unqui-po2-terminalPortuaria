@@ -19,7 +19,7 @@ class WeighingTest {
 		refeerContainerTest = mock(RefeerContainer.class);
 		tankContainerTest = mock(TankContainer.class);
 		fixedPriceTest = 10.0;
-		weighingTest = new Weighing(fixedPriceTest);
+		weighingTest = new Weighing(fixedPriceTest, "Weighing");
 		
 	}
 	
@@ -38,19 +38,19 @@ class WeighingTest {
 	@Test
 	void testEqualsDryContainerChargeForUse() {
 		
-		assertEquals(10.0, weighingTest.chargeForUse(dryContainerTest, 25.0));
+		assertEquals(10.0, weighingTest.chargeForUse(dryContainerTest));
 	}
 	
 	@Test
 	void testEqualsRefeerContainerChargeForUse() {
 		
-		assertEquals(10.0, weighingTest.chargeForUse(refeerContainerTest, 5.0));
+		assertEquals(10.0, weighingTest.chargeForUse(refeerContainerTest));
 	}
 	
 	@Test
 	void testEqualsTankContainerChargeForUse() {
 		
-		assertEquals(10.0, weighingTest.chargeForUse(tankContainerTest, 2.0));
+		assertEquals(10.0, weighingTest.chargeForUse(tankContainerTest));
 	}
 
 }
