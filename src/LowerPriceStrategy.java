@@ -3,6 +3,7 @@ import java.util.List;
 public class LowerPriceStrategy implements ISearchStrategy{
 
 
+    // estrategia que busca el viaje mas barato hacia la terminal de destino
     public LowerPriceStrategy() {
     }
 
