@@ -10,7 +10,8 @@ public class SearchByTerminal implements ISearchEngine {
 	
 	@Override
 	public boolean markedFilter(Travel travel) {
-		return  travel.getRoute().getDestiny().getName() == terminalName;
+	    String terminalNameTravel = travel.getRoute().getDestiny().getName();
+		return terminalName.equals(terminalNameTravel);
 	}
 	
 }
