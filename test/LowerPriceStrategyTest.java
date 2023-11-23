@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -37,7 +38,9 @@ public class LowerPriceStrategyTest {
 
         List<Travel> schedule = Arrays.asList(travel1, travel2, travel3);
 
-        when(origenTerminal.getShippingCompany()).thenReturn((List<ShippingCompany>) shippingCompany);
+        List<ShippingCompany> shippingCompanies = new ArrayList<>();
+        shippingCompanies.add(shippingCompany);
+        when(origenTerminal.getShippingCompany()).thenReturn(shippingCompanies);
         when(shippingCompany.getSchedule()).thenReturn(schedule);
 
         Travel result = lowerPriceStrategy.search(origenTerminal, destinyTerminal);

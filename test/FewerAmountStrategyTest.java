@@ -4,6 +4,7 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -54,7 +55,9 @@ public class FewerAmountStrategyTest {
         when(section3.getEndingTerminal()).thenReturn(mock(Terminal.class));
 
         // Configuración de mocks y relaciones
-        when(origenTerminal.getShippingCompany()).thenReturn((List<ShippingCompany>) shippingCompany);
+        List<ShippingCompany> shippingCompanies = new ArrayList<>();
+        shippingCompanies.add(shippingCompany);
+        when(origenTerminal.getShippingCompany()).thenReturn(shippingCompanies);
         when(shippingCompany.getSchedule()).thenReturn(Arrays.asList(travel1, travel2, travel3));
 
         // Uso de la estrategia para buscar el mejor viaje
