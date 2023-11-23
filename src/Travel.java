@@ -1,3 +1,4 @@
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Iterator;
 
@@ -75,4 +76,13 @@ public class Travel {
     }
 
 
+    public int getTotalTimeUntilTerminal(Terminal destinyTerminal) {
+        LocalDateTime arrivalDate = getArrivalDate(destinyTerminal);
+
+        // Calcula la diferencia de tiempo desde la fecha de inicio hasta la fecha de llegada
+        Duration duration = Duration.between(startingDate, arrivalDate);
+
+        // Devuelve el tiempo total en horas
+        return (int) duration.toHours();
+    }
 }

@@ -33,28 +33,14 @@ public class LessTimeStrategy  implements ISearchStrategy{
     }
 
     // Método auxiliar para calcular el tiempo total de un viaje
+    //  se calcula el precio total de un viaje hasta la terminal de destino
     private int calculateTotalTime(Travel travel, Terminal destinyTerminal) {
-        List<Section> sections = travel.getRoute().getSections();
-        int totalTime = 0;
-        boolean foundDestiny = false;
-        Iterator<Section> sectionIterator = sections.iterator();
-        // se recorren las secciones del travel y se va calculando el tiempo total en horas hasta llegar a la terminal destino
-        // si la terminal no se encuentra, se lanza una exception.
-
-        while (sectionIterator.hasNext() && !foundDestiny) {
-            Section section = sectionIterator.next();
-            totalTime += section.getTime();
-
-            if (section.getEndingTerminal().equals(destinyTerminal)) {
-                foundDestiny = true;
-            }
+        try {
+            return travel.getTotalTimeUntilTerminal(destinyTerminal);
+        } catch (IllegalArgumentException e) {
+            // Si la terminal de destino no está en el viaje, devolvemos un negativo
+            return -1;
         }
-
-        if (!foundDestiny) {
-            throw new IllegalArgumentException("La terminal de destino no está en el viaje.");
-        }
-
-        return totalTime;
     }
 
 }
