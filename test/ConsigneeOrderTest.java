@@ -28,6 +28,7 @@ class ConsigneeOrderTest {
 		
 	    client = mock(Client.class);
 	    container = mock(Container.class);
+		targetTerminal = mock(Terminal.class);
 	    truck = mock (Truck.class);
 	    driver = mock (Driver.class);
 	    travel = mock(Travel.class);
@@ -35,9 +36,14 @@ class ConsigneeOrderTest {
 		powerSupply =mock (IService.class);
 		washing = mock (IService.class);
 		shippingRoute = mock(ShippingRoute.class);
-		order = new ConsigneeOrder("345868-2", client, container, truck, driver, travel);
+		order = new ConsigneeOrder("345868-2", client, container, truck, driver, travel, targetTerminal);
 		
 	
+	}
+
+	@Test
+	void testEqualsGetDestinyTerminal(){
+		assertEquals(targetTerminal, order.getDestinyTerminal());
 	}
 	
 	@Test

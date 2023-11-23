@@ -40,7 +40,7 @@ public class LessTimeStrategyTest {
 
         List<Travel> schedule = Arrays.asList(travel1, travel2, travel3);
 
-        when(origenTerminal.getShippingCompany()).thenReturn(shippingCompany);
+        when(origenTerminal.getShippingCompany()).thenReturn((List<ShippingCompany>) shippingCompany);
         when(shippingCompany.getSchedule()).thenReturn(schedule);
 
         Travel result = lessTimeStrategy.search(origenTerminal, destinyTerminal);
