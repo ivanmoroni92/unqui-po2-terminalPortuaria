@@ -9,7 +9,6 @@ public class ShipperOrder {
 	    protected Client client ;
 	    protected List<IService> services ;
 	    protected Travel travel ;
-	    protected Terminal destiny;
 
 
 	    public ShipperOrder(String orderID, Client client ,Container container,Truck truck,Driver driver) {
@@ -69,15 +68,7 @@ public class ShipperOrder {
 
 
 
-	     public Terminal getDestiny() {
-	    	 return destiny;
-	     }
-
-
-
-	
-
-
+	  
 	    public double getOrderPrice() {
 	        return this.getServicesPrice() ;
 
