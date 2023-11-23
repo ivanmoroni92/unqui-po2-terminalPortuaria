@@ -86,7 +86,8 @@ class PowerSupplyTest {
 		verify(refeerContainerTest, times(1)).getConsumePerHour();
 	}
 
-void testEqualsRefeerContainerZeroHoursChargeForUse() {
+	@Test
+	void testEqualsRefeerContainerZeroHoursChargeForUse() {
 		
 		when(refeerContainerTest.getConsumePerHour()).thenReturn(2.0);
 		assertEquals(0.0, powerSupplyTest.chargeForUse(refeerContainerTest));
