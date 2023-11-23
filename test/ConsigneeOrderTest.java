@@ -27,6 +27,7 @@ class ConsigneeOrderTest {
 	void setUp() throws Exception {
 		
 	    client = mock(Client.class);
+		targetTerminal = mock(Terminal.class);
 	    container = mock(Container.class);
 	    truck = mock (Truck.class);
 	    driver = mock (Driver.class);
@@ -35,7 +36,7 @@ class ConsigneeOrderTest {
 		powerSupply =mock (IService.class);
 		washing = mock (IService.class);
 		shippingRoute = mock(ShippingRoute.class);
-		order = new ConsigneeOrder("345868-2", client, container, truck, driver, travel);
+		order = new ConsigneeOrder("345868-2", client, container, truck, driver, travel, targetTerminal);
 		
 	
 	}
@@ -46,6 +47,11 @@ class ConsigneeOrderTest {
 		
 		assertEquals("Ivan", order.getClient().getName());
 		verify(client ,times(1)).getName();
+	}
+
+	@Test
+	void testEqualsGetDestinyTerminal(){
+		assertEquals(targetTerminal, order.getDestinyTerminal());
 	}
 	
 	@Test

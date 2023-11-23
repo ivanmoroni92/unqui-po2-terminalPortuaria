@@ -9,18 +9,19 @@ public class LowerPriceStrategy implements ISearchStrategy{
 
     @Override
     public Travel search(ManagedTerminal origenTerminal, Terminal destinyTerminal) {
-        List<Travel> travels = origenTerminal.getShippingCompany().getSchedule();
+        //todo la managedTerminal puede tener mas de una shippingCompany
+        List<Travel> schedule = origenTerminal.getShippingCompany().get(0).getSchedule();
 
-        if (travels.isEmpty()) {
+        if (schedule.isEmpty()) {
             throw new IllegalStateException("No hay viajes registrados");
         }
         // Inicializar con el primer travel
-        Travel lowestPriceTravel = travels.get(0);
+        Travel lowestPriceTravel = schedule.get(0);
         Double lowestPrice = calculateTotalPrice(lowestPriceTravel, destinyTerminal);
 
         // se recorren los travels, y nos vamos quedando con el de menor precio
         // al terminar de recorrer, se devuelve el travel con menor precio
-        for (Travel travel : travels) {
+        for (Travel travel : schedule) {
             Double currentPrice = calculateTotalPrice(travel, destinyTerminal);
             if (currentPrice < lowestPrice) {
                 lowestPrice = currentPrice;
