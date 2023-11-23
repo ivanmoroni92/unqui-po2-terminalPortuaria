@@ -9,7 +9,8 @@ public class LessTimeStrategy  implements ISearchStrategy{
 
     @Override
     public Travel search(ManagedTerminal origenTerminal, Terminal destinyTerminal) {
-        List<Travel> schedule = origenTerminal.getShippingCompany().getSchedule();
+        //todo la managedTerminal puede tener mas de una shippingCompany
+        List<Travel> schedule = origenTerminal.getShippingCompany().get(0).getSchedule();
 
         if (schedule.isEmpty()) {
             throw new IllegalStateException("El horario de la compañía de envíos está vacío.");

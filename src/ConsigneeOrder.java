@@ -3,9 +3,10 @@ public class ConsigneeOrder extends ShipperOrder {
 	
 	private Terminal destinyTerminal;
 
-	public ConsigneeOrder(String orderID, Client client, Container container, Truck truck, Driver driver, Travel travel) {
+	public ConsigneeOrder(String orderID, Client client, Container container, Truck truck, Driver driver, Travel travel, Terminal destinyTerminal) {
 		super(orderID, client, container, truck, driver);
 		this.travel = travel;
+		this.destinyTerminal = destinyTerminal;
 	}
 	
 	@Override

@@ -54,7 +54,7 @@ public class FewerAmountStrategyTest {
         when(section3.getEndingTerminal()).thenReturn(mock(Terminal.class));
 
         // Configuración de mocks y relaciones
-        when(origenTerminal.getShippingCompany()).thenReturn(shippingCompany);
+        when(origenTerminal.getShippingCompany()).thenReturn((List<ShippingCompany>) shippingCompany);
         when(shippingCompany.getSchedule()).thenReturn(Arrays.asList(travel1, travel2, travel3));
 
         // Uso de la estrategia para buscar el mejor viaje

@@ -7,13 +7,14 @@ public class FewerAmountStrategy implements ISearchStrategy {
 
     @Override
     public Travel search(ManagedTerminal origenTerminal, Terminal destinyTerminal) {
-        List<Travel> travels = origenTerminal.getShippingCompany().getSchedule();
+        //todo la managedTerminal puede tener mas de una shippingCompany
+        List<Travel> schedule = origenTerminal.getShippingCompany().get(0).getSchedule();
 
         // Inicializamos las variables para realizar el seguimiento del travel con la menor cantidad de terminales intermedias
         Travel minIntermediateTerminalsTravel = null;
         int minIntermediateTerminals = Integer.MAX_VALUE;
 
-        for (Travel travel : travels) {
+        for (Travel travel : schedule) {
             try {
                 int intermediateTerminals = calculateIntermediateTerminals(travel, origenTerminal, destinyTerminal);
 
