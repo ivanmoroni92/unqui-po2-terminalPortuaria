@@ -1,7 +1,8 @@
 
 public class ConsigneeOrder extends ShipperOrder {
-
 	
+	private Terminal destinyTerminal;
+
 	public ConsigneeOrder(String orderID, Client client, Container container, Truck truck, Driver driver, Travel travel) {
 		super(orderID, client, container, truck, driver);
 		this.travel = travel;
@@ -14,6 +15,10 @@ public class ConsigneeOrder extends ShipperOrder {
     }
 
 	private double getTravelPrice() {
-		return travel.getTotalPriceUntilTerminal(travel.getRoute().getDestiny());
+		return travel.getTotalPriceUntilTerminal(destinyTerminal);
+	}
+	
+	public Terminal getDestinyTerminal() {
+		return destinyTerminal;
 	}
 }
